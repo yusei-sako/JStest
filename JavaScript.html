@@ -8,10 +8,11 @@
   <script src="myscript.js"></script>
   <script>
     console.log("hello world!");
+
     /* 変数：データにつけるラベル
        データ型
         - 文字列
-          　表現方法
+            表現方法
              特殊文字
           演算子 */
     var s;
@@ -27,8 +28,31 @@
     x++; // 2
     x--; // 1
     console.log(x);
+
     /*  - 真偽値 (true / false)
-        - オブジェクト
+            文字列: 空文字以外だったらtrue
+            数値: 0かNaN以外だったらtrue
+            object: null以外だったらtrue
+            undefined, null -> false */
+    if(x){
+      //処理
+    }
+    if (x !== '') {
+      //処理
+    }
+    /*  三項演算子
+    var a, b, c;
+    if (条件) {
+      a = b;
+    } else {
+      a = c;
+    }
+    下のように書き換えられるRicty Diminished
+    a = (条件) ? b : c; */
+    var max, x, y;
+    max = (x > y) ? x : y;
+
+    /*  - オブジェクト
           - 配列
           - 関数
           - 組み込みオブジェクト
@@ -36,6 +60,153 @@
         - null 何もない */
     var msg = "hello world!"; /* 変数の宣言と代入 */
     console.log("msg");
+
+    /*  条件分岐
+          if (条件) {
+              真
+          } else {
+              偽
+          } */
+          var score = 80;
+          if (score > 60) {
+            console.log("ok!");
+          } else if(score > 40) {
+            console.log("soso...");
+          } else {
+            console.log("ng!");
+          }
+          var signal = "pink";
+          switch (signal) {
+            case "red":
+              console.log("stop!");
+              break;
+            case "blue":
+              console.log("go!");
+              break;
+          }
+
+    /*  論理演算子
+        AND &&
+        OR ||
+        NOT !
+        score > 60 && score < 80 */
+
+    /* ループ処理
+         while
+         do ... while */
+      var i = 0;
+      while (i < 10) {
+        console.log(i);
+        i++;
+      } // 最初に条件判定
+      var i = 200;
+      do {
+        console.log(i);
+        i++;
+      } while (i < 10); // 後で判定
+    /*   for
+          break ループ処理を抜ける
+          continue ループ処理を一回スキップ */
+      for (var i = 0; i < 10; i++) {
+        console.log(i);
+      }
+      for (var i = 0; i < 10; i++) {
+        if (i === 5) { // iが5の時
+          break; // ループを抜ける 0,1,2,3,4
+          // continue; 5になった時飛ばす 0,1,2,3,4,6,7,8,9
+        }
+        console.log(i);
+      }
+
+    /* alert    OKボタンの付いたダイヤログボックスを表示
+       confirm  OKとキャンセルボタンのダイヤログボックス表示
+       prompt   テキストボックス付き */
+    var answer = confirm("キャンセル or OK");
+    console.log(answer);
+    /* if(confirm("本当に削除しますか？")) {
+      削除処理
+    } */
+    var name = prompt("お名前は？");
+    console.log(name);
+
+    /* 関数: 複数の処理
+    function 関数名(引数) {
+      処理
+      return 返り値
+    }
+    function hello(name){
+      console.log("hello " + name);
+    }
+    hello("Tom");
+    hello("Bob");
+    function hello(name){
+      var msg = "hello " + name; // ローカル変数
+      return msg;
+    } */
+    var hello = function hello(name){ // 無名関数、匿名関数
+      var msg = "hello " + name; // ローカル変数
+      return msg;
+    };
+    var greet = hello("Tom");
+    console.log(greet); // hello Tom
+
+    /* 即時関数
+       これを使うことによって関数を安全に使うことができる
+       複雑なコードを書く時
+    */
+    (function hello() {
+      console.log("hello");
+    })(); //hello
+    (function(name) {
+      console.log("hello " + name);
+    })("Tom"); //hello Tom
+    (function() {
+      var x = 10,
+          y = 20;
+      console.log(x + y);
+    })(); //hello
+
+    /* タイマー処理
+         setInterval どんどん処理する(重くなる)
+         setTimeout 前の処理が終わってから(良く使われる) */
+    var i = 0;
+    function show() {
+        console.log(i++);
+        var tid = setTimeout(function() {
+            show();
+        }, 1000);
+        if (i > 5) {
+            clearTimeout(tid);
+        }
+    }
+    show(); // 条件に合うまでループ
+
+    /* 配列: グループ化されたデータ */
+    // var score_1 = 100, score_2 = 200
+    var score = [100, 300, 500, "taguchi"]; // 配列格納
+    console.log(score[0]); // 添字 0, 1, ...
+    score[2] = 400; // 3つ目を書き換える
+    console.log(score); // すべて表示
+    var m = [ // 配列の中に配列
+      [1, 2, 3],
+      [4, 5, 6]
+    ];
+    console.log(m[1][1]); // 5を取得
+
+    /* オブジェクト
+           名前と値 */
+    var user = {
+      email: "yusei@gmail.com", // プロパティ
+      score: 80,
+      greet: function(name) { // メソッド
+          console.log("hello, " + name + " from " + this.email);
+      } // this オブジェクトの中の他のプロパティを参照
+    };
+    console.log(user["email"]);
+    console.log(user.email); // どちらでも可
+    user.score = 100;
+    console.log(user); // {email: "yusei@gmail.com", score: 100}
+    user.greet("Tom"); // hello, Tom
   </script>
 </body>
 </html>
