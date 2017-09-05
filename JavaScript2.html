@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>JavaScriptの練習</title>
+  <style>
+      .myStyle {
+          font-weight: bold;
+          border: 1px solid gray;
+      }
+  </style>
+</head>
+<body>
+  <h1>見出し</h1>
+  <p id="msg">こんにちは！</p>
+  <button id="add">Click!</button>
+  <script>
+  // DOM(document object model) documentにアクセスする為の色々な命令
+  // p要素のテキストを書き換える
+  // JavaScriptからいじる場合にはidが振ってあると扱いやすい
+  var e = document.getElementById('msg'); // p要素を e という変数に入れる
+  e.textContent = 'hello!'; // テキストを書き換える
+  // 最初に指定した「こんにちは！」が「hello!」に変換される
+  e.style.color = 'red'; // 色
+  e.className = 'myStyle'; // 用意していたmyStyleを適用
+
+  document.getElementById('add').addEventListener('click', function() { // addのbuttonを取得
+  // addの要素に対してイベントをひも付けることができる
+  // (イベントの種類, 関数)
+    // body要素の中にp要素を追加し、そのp要素の中にtextを仕込む
+    // hello worldというテキストを作るので、greetというelementを作る
+    var greet = document.createElement('p'), // elementを作成
+        text = document.createTextNode('hello world'); // テキストを入れる
+    // bodyに子要素を追加
+    document.body.appendChild(greet).appendChild(text); // 子要素の最後に追加
+    // greetにtextを入れる hello world
+  }); // addの付いたボタンをクリックする度にdocumentの最後にhello worldが追加されていく
+  </script>
+</body>
+</html>
