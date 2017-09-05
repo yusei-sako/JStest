@@ -5,6 +5,8 @@
   <title>JavaScriptの練習</title>
 </head>
 <body>
+  <h1>見出し</h1>
+  <p id="msg">こんにちは！</p>
   <script src="myscript.js"></script>
   <script>
     console.log("hello world!");
@@ -207,6 +209,51 @@
     user.score = 100;
     console.log(user); // {email: "yusei@gmail.com", score: 100}
     user.greet("Tom"); // hello, Tom
+
+    /* 組み込みオブジェクト
+      - String 文字列 */
+      // var s = new String("sako"); // sに引数を渡す 文字列オブジェクト
+      var s = "sako"; // このように書いても同じになる 文字列リテラル
+      console.log(s.length); // langth 文字列の長さを返す 4
+      console.log(s.replace("s","S")); // replace 置き換え Sako
+      console.log(s.substr(1, 3)); // substr 部分文字列を返す ako
+                                   // 添字, 何文字表示するか
+   // - Array 配列
+      // var a = new Array(100, 300,200);
+      var a = [100, 300, 200];
+      console.log(a.length); // 配列の個数を返す 3
+      /* unshift 先頭に追加
+         push    末尾に追加
+         shift   先頭から除去
+         pop     末尾から除去
+         splice  途中の要素を追加、削除 */
+      a.push(500); // 末尾に500を追加
+      console.log(a); // 100, 300, 200, 500
+      a.splice(1, 2, 800, 1000); // 添字, 何文字削除するか、後の二つを追加
+                                 // 配列の二つ目から二個削除し、800と1000を追加
+      console.log(a); // 100, 800, 1000, 500
+   // - Math 数学 他のオブジェクトと違ってnewする必要なし
+      console.log(Math.PI); // 円周率を表示 3.1415...
+      console.log(Math.ceil(5.3)); // 実数を渡すと切り上げ 6
+      console.log(Math.floor(5.3)); // 切り捨て 5
+      console.log(Math.round(5.3)); // 四捨五入 5
+      console.log(Math.random()); // ランダム値を生成
+                                  // 0から1未満の実数を生成
+   // - Date 日付
+      var d = new Date(); // 現在時刻のオブジェクト取得
+      /* var d = new Date(1996, 1, 22, 10, 20, 30); 1996年2月22日10時20分30秒
+                                                    月は0 = 1月、1 = 2月となる */
+      console.log(d.getFullYear()); // 年を取得
+      console.log(d.getMonth()); // 月を取得 1月は0、2月は1が取得される
+      console.log(d.getTime()); // 基準日からの経過ミリ秒
+                                // 1970年１月１日からの経過ミリ秒表示
+      // 日付計算をする時は、経過ミリ秒同士で計算してから日付に変換する
+
+      /* console.dir(window); オブジェクトのプロパティを変更 色々出る
+         console.log(window.outerHeight); windowの高さを表示
+         window.location.href = 'https://github.com/'; 別のURLに飛ばす
+         document 今開いているページ 特に良く使う
+         動的にページの一部を書き換えたり、新しい要素を追加 */
   </script>
 </body>
 </html>
